@@ -41,53 +41,31 @@
     </div>
 </div>
 
-<!-- <div class="row">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Post One</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, molestias distinctio? Maxime non deserunt praesentium nihil ipsum, eaque adipisci a accusamus ut officia iure nisi sit, quod voluptas officiis modi.</p>
-        <h6 class="card-subtitle text-muted text-right">Author: Candra</h6>
-        <button class="btn btn-warning">Edit</button>
-        <button class="btn btn-danger">Delete</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Post Two</h5>
-      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, molestias distinctio? Maxime non deserunt praesentium nihil ipsum, eaque adipisci a accusamus ut officia iure nisi sit, quod voluptas officiis modi.</p>
-      <h6 class="card-subtitle text-muted text-right">Author: John DOe</h6>
-      <button class="btn btn-warning">Edit</button>
-      <button class="btn btn-danger">Delete</button>
-    </div>
-  </div>
-</div> -->
 
 <div class="row">
-  <?php 
+<?php 
     $posts = new Posts();
-    if($posts->getPost()) {
-      foreach($posts->getPost() as $post) {
-        echo '<div class="col-md-6 mt-4">';
-        echo '<div class="card">';
-        echo '<div class="card-body">';
-        echo "<h5 class='card-title'>" . $post['title'] . "</h5>";
-        echo "<p class='card-text'>" . $post['body'] . "</p>";
-        echo "<h6 class='card-subtitle text-muted text-right'>Author: " . $post['author'] . "</h6>";
-        echo "<a  href='editForm.php?id=" . $post['id'] . "' class='btn btn-warning'>Edit</a> ";
-        echo "<a href='process.php?send=del&id=" . $post['id'] . "' class='btn btn-danger'>Delete</a>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-      }
-    }  else {
-      echo "<p class='mt-5 mx-auto'>Post is empty...</p>";
+    if($posts->getPost()) {  //Get all posts
+        foreach($posts->getPost() as $post) {
+            echo '<div class="col-md-6">';
+            echo '<div class="card">';
+            echo '<div class="card-body">';
+            echo "<h3 class='card-title'>" . $post['title'] . "</h3>";
+            echo "<p class='card-text'>" . $post['body'] . "</p>";
+            echo "<h6 class='card-subtitle text-muted text-right'>Author: " . $post['author'] . "</h6>";
+            echo "<a  href='editForm.php?id=" . $post['id'] . "' class='btn btn-warning mt-3'>Edit</a> ";
+            echo "<a href='process.php?send=del&id=" . $post['id'] . "' class='btn btn-danger mt-3'>Delete</a>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        }
+    }  
+    else {
+        echo "<p class='mt-5 mx-auto'>Post is empty...</p>";
     }
-  ?>
+?>
 </div>
 
 <?php 
-  require_once("./templates/footer.php");
+    require_once("./templates/footer.php");
 ?>

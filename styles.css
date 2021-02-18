@@ -1,0 +1,23 @@
+body {
+    background-color: #ddd;
+}
+
+.card {
+    background-color: #cdcdcd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin-bottom: 25px;
+}
+
+.btn {
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+input, textarea{
+    background-color: #ededed;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+label {
+    margin-top: 10px;
+}
