@@ -1,23 +1,27 @@
-<?php 
+<?php
 
-class Posts extends DbConnect {
-    public function getPost() {
+class Posts extends DbConnect
+{
+    public function getPost()
+    {
         $sql = "SELECT * FROM posts";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
 
-        while($result = $stmt->fetchAll()) {
+        while ($result = $stmt->fetchAll()) {
             return $result;
         };
     }
 
-    public function addPost($title, $body, $author) {
+    public function addPost($title, $body, $author)
+    {
         $sql = "INSERT INTO posts(title, body, author) VALUES (?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$title, $body, $author]);
     }
 
-    public function editPost($id) {
+    public function editPost($id)
+    {
         $sql = "SELECT * FROM posts WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$id]);
@@ -26,13 +30,15 @@ class Posts extends DbConnect {
         return $result;
     }
 
-    public function updatePost($id, $title, $body, $author) {
+    public function updatePost($id, $title, $body, $author)
+    {
         $sql = "UPDATE posts SET title = ?, body = ?, author = ? WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$title, $body, $author, $id]);
     }
 
-    public function delPost($id) {
+    public function delPost($id)
+    {
         $sql = "DELETE FROM posts WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$id]);
